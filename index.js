@@ -6,14 +6,15 @@ const width = canvas.width = window.innerWidth
 const height = canvas.height = window.innerHeight
 const size = Math.min(width, height)
 
+let degree = 4
+
 _.fillStyle = 'white'
 _.strokeStyle = 'black'
 
 function draw() {
-  _.fillRect(0, 0, width, height)
-
-  createHilbertCurve(4)(width / 2, height / 2, size)
-
+  _.clearRect(0, 0, width, height)
+  _.beginPath()
+  createHilbertCurve(degree)(width / 2, height / 2, size)
   _.stroke()
 }
 
@@ -64,4 +65,27 @@ function createHilbertCurve(maxDepth = 1) {
   return drawPart
 }
 
-window.addEventListener('load', draw)
+const plusButton = document.getElementById('plus')
+const minusButton = document.getElementById('minus')
+const degreeSpan = document.getElementById('degree')
+
+plusButton.onclick = () => {
+  degree++
+  step()
+}
+
+minusButton.onclick = () => {
+  degree = Math.max(1, degree - 1)
+  step()
+}
+
+function updateUi() {
+  degreeSpan.innerHTML = degree
+}
+
+function step() {
+  updateUi()
+  draw()
+}
+
+window.addEventListener('load', step)

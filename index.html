@@ -10,15 +10,36 @@
     <style>
       body {
         margin: 0;
+        font-family: sans-serif;
       }
       canvas {
         width: 100vw;
         height: 100vh;
       }
+      .buttons {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+      }
+      .buttons > div {
+        margin-bottom: 6px;
+      }
+      #degree {
+        margin-left: 12px;
+        margin-right: 12px;
+      }
     </style>
   </head>
   <body>
     <canvas></canvas>
+    <div class="buttons">
+      <div>
+        Degree:
+      </div>
+      <button id="minus">-</button>
+      <span id="degree"></span>
+      <button id="plus">+</button>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
