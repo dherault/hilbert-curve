@@ -4,19 +4,15 @@ const _ = canvas.getContext('2d')
 
 const width = canvas.width = window.innerWidth
 const height = canvas.height = window.innerHeight
-
 const size = Math.min(width, height)
-const xStart = width / 2
-const yStart = height / 2
 
 _.fillStyle = 'white'
 _.strokeStyle = 'black'
-_.lineWidth = 1
 
 function draw() {
   _.fillRect(0, 0, width, height)
 
-  createHilbertCurve(4)(xStart, yStart, size)
+  createHilbertCurve(4)(width / 2, height / 2, size)
 
   _.stroke()
 }
